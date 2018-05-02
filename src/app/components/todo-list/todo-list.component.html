@@ -1,0 +1,16 @@
+<button (click)="addMockedTask()">
+  Add mocked task!
+</button>
+
+<div class="todos" *ngIf="todoListState$ | async as todoState">
+  <ng-container *ngIf="todoState.loading;else todoList">
+    <div class="loader">
+      Loading...
+    </div>
+  </ng-container>
+  <ng-template #todoList>
+    <ng-container *ngFor="let todo of todoState.todos">
+      {{todo.title}}
+    </ng-container>
+  </ng-template>
+</div>
